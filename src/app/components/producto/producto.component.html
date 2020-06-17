@@ -12,12 +12,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let pro of producto">
+          <tr *ngFor="let pro of productos">
             <th scope="row">1</th>
-            <td>{{pro.nombre}}</td>
+            <td>{{pro.nombreprod}}</td>
             <td>{{pro.cantidad}}</td>
             <td>{{pro.precio}}</td>
-            <td>{{pro.idcategoria}}</td>
+            <td>{{pro.categoria["nombre_cat"]}}</td>
             <td><i class="fas fa-trash-alt" (click)="eliminar(condu)" style="color: red; margin-left: 20px;"></i></td>
             <td><i class="fas fa-edit" (click)="actualizar(condu)" style="color: blue; margin-left: -60px;" data-toggle="modal"
                 data-target="#ModificarUsuario"></i></td>

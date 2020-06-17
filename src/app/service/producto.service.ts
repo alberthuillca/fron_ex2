@@ -17,13 +17,13 @@ export class ProductoService {
 
   listaProducto(): Observable<Producto[]>{
     console.log("habla")
-    return this.http.get<Producto[]>(`${ environment.apiUrl }/productos/`);
+    return this.http.get<Producto[]>(`${ environment.apiUrl }/producto`);
   }
   crearProducto(producto:Producto){
     return this.http.post<Producto>(`${ environment.apiUrl }/productos/add`,producto);
   }
   deleteProducto(producto:Producto){
-   return this.http.put<Producto>(`${ environment.apiUrl }/productos/D`, producto);
+   return this.http.put<Producto>(`${ environment.apiUrl }/productos/d`, producto);
 
   }
   editarProducto(producto:Producto){

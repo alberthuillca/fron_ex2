@@ -8,8 +8,8 @@ import { Producto } from 'src/app/Modelo/Producto';
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit {
-  productos: Producto = new Producto();
-  producto: Producto[]=[];
+  producto: Producto = new Producto();
+  productos: Producto[]=[];
 
   constructor(private productoService: ProductoService) { }
 
@@ -17,9 +17,10 @@ export class ProductoComponent implements OnInit {
     alert("gii");
     this.productoService.listaProducto().subscribe(
       (data) => {
-        this.producto = data;
+        this.productos = data;
+        alert(data)
         console.log(data)
-        console.log(this.producto);
+        console.log(this.productos);
       }
     );
   }
