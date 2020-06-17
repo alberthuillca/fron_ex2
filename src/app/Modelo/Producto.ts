@@ -3,14 +3,8 @@ export class Producto {
     nombre: string;
     precio: number;
     cantidad: number;
-    idcategoria: {
-        idporducto:number
+    categoria: {
+        idporducto:number,
+        nombre: string
     };
-}
-export class Productos {
-    idproducto: number;
-    nombre: string;
-    precio: number;
-    cantidad: number;
-    idcategoria: number;
 }

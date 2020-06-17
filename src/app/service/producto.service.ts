@@ -16,6 +16,7 @@ export class ProductoService {
 
 
   listaProducto(): Observable<Producto[]>{
+    console.log("habla")
     return this.http.get<Producto[]>(`${ environment.apiUrl }/productos/`);
   }
   crearProducto(producto:Producto){

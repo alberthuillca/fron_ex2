@@ -14,9 +14,11 @@ export class ProductoComponent implements OnInit {
   constructor(private productoService: ProductoService) { }
 
   ngOnInit() {
+    alert("gii");
     this.productoService.listaProducto().subscribe(
       (data) => {
         this.producto = data;
+        console.log(data)
         console.log(this.producto);
       }
     );
