@@ -20,14 +20,16 @@ export class ProductoService {
     return this.http.get<Producto[]>(`${ environment.apiUrl }/producto`);
   }
   crearProducto(producto:Producto){
-    return this.http.post<Producto>(`${ environment.apiUrl }/productos/add`,producto);
+    return this.http.post<Producto>(`${ environment.apiUrl }/producto`,producto);
   }
-  deleteProducto(producto:Producto){
-   return this.http.put<Producto>(`${ environment.apiUrl }/productos/d`, producto);
+  deleteProducto(id:number){
+    console.log(id + " ella")
+   return this.http.delete<Producto>(`${ environment.apiUrl }/producto/`+ id);
 
   }
   editarProducto(producto:Producto){
-   return this.http.put<Producto>(`${ environment.apiUrl }/productos/ `+producto.idproducto,producto);
+    console.log(producto)
+   return this.http.put<Producto>(`${ environment.apiUrl }/producto/`+ producto.id, producto);
   
   }
   

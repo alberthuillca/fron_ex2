@@ -1,10 +1,8 @@
+import { Categoria } from 'src/app/Modelo/Categoria';
 export class Producto {
-    idproducto: number;
+    id: number;
     nombreprod: string;
     precio: number;
     cantidad: number;
-    categoria: {
-        idporducto:number,
-        nombre: string
-    };
+    categoria: Categoria;
 }

@@ -12,18 +12,95 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let pro of productos">
-            <th scope="row">1</th>
+          <tr *ngFor="let pro of productos; let i = index ">
+            <th scope="row">{{i + 1}}</th>
             <td>{{pro.nombreprod}}</td>
             <td>{{pro.cantidad}}</td>
             <td>{{pro.precio}}</td>
             <td>{{pro.categoria["nombre_cat"]}}</td>
-            <td><i class="fas fa-trash-alt" (click)="eliminar(condu)" style="color: red; margin-left: 20px;"></i></td>
-            <td><i class="fas fa-edit" (click)="actualizar(condu)" style="color: blue; margin-left: -60px;" data-toggle="modal"
-                data-target="#ModificarUsuario"></i></td>
+            <td><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;" (click)="eliminar(pro.id)"></i></td>
+            <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarPro" data-whatever="@mdo" (click)="cargar(pro)"></i></td>
             </tr>
         </tbody>
       </table>
-      <button type="button" class="btn btn-primary">Agregar</button>
+      <button type="button" id="register"  class="btn btn-primary" data-toggle="modal" data-target="#RegisterRol" data-whatever="@mdo">Agregar</button>
 </div>
 
+    
+<!-- Modal Registrar Producto -->
+<div class="modal fade" id="RegisterRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">REGISTRAR PRODUCTO</h5>
+          <hr>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label for=""> Nombre: </label>
+          <input type="text" class="form-control" placeholder="..." [(ngModel)]="producto.nombreprod">
+        </div>
+        <div class="modal-body">
+          <label for=""> Precio: </label>
+          <input type="text" class="form-control" placeholder="..." [(ngModel)]="producto.precio">
+        </div>
+        <div class="modal-body">
+          <label for=""> Cantidad: </label>
+          <input type="text" class="form-control" placeholder="..." [(ngModel)]="producto.cantidad">
+        </div>
+        <div class="modal-body">
+          <label for=""> Categoria: </label>
+          <select id="inputState" class="form-control" [(ngModel)]="categoria.idcategoria">
+            <option  >...</option>
+            <option [value]="cat.idcategoria" *ngFor="let cat of categorias">{{cat.nombre_cat}}</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="Guardar()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- Modal Modificar Producto -->
+<div class="modal fade" id="ModificarPro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">MODIFICAR PRODUCTO</h5>
+        <hr>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for=""> Nombre: </label>
+        <input type="text" class="form-control" placeholder="..." [(ngModel)]="proup.nombreprod" name="nompro">
+      </div>
+      <div class="modal-body">
+        <label for=""> Precio: </label>
+        <input type="text" class="form-control" placeholder="..." [(ngModel)]="proup.precio" name = "precio">
+      </div>
+      <div class="modal-body">
+        <label for=""> Cantidad: </label>
+        <input type="text" class="form-control" placeholder="..." [(ngModel)]="proup.cantidad" name="cantidad">
+      </div>
+      <div class="modal-body">
+        <label for=""> Categoria: </label>
+        <select id="inputState" class="form-control" [(ngModel)]="idcat" name="idcat">
+          <option  >...</option>
+          <option [value]="cat.idcategoria" *ngFor="let cat of categorias">{{cat.nombre_cat}}</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" >Cerrar</button>
+        <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="Actualizar(proup)">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  

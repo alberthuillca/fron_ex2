@@ -7,12 +7,61 @@
             <th scope="col">Opciones</th>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Mark</td>
+          <tr *ngFor="let cat of categorias; let i = index ">
+            <th scope="row">{{i+1}}</th>
+            <td>{{cat.nombre_cat}}</td>
+            <td><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;" (click)="eliminar(cat.idcategoria)"></i></td>
+            <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarPro" data-whatever="@mdo" (click)="cargar(cat)"></i></td>
           </tr>
         </tbody>
       </table>
-      <button type="button" class="btn btn-primary">Agregar</button>
+      <button type="button" id="register"  class="btn btn-primary" data-toggle="modal" data-target="#RegisterRol" data-whatever="@mdo">Agregar</button>
+</div>
+
+    
+<!-- Modal Registrar Rol -->
+<div class="modal fade" id="RegisterRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">REGISTRAR CATEGORIA</h5>
+        <hr>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for=""> Nombre: </label>
+        <input type="text" class="form-control" placeholder="..." [(ngModel)]="categoria.nombre_cat">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="Guardar()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+     
+  
+<!-- Modal Modificar Categoria -->
+<div class="modal fade" id="ModificarPro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">MODIFICAR CATEGORIA</h5>
+        <hr>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for=""> Nombre: </label>
+        <input type="text" class="form-control" placeholder="..." [(ngModel)]="catup.nombre_cat" name="nomcat">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" >Cerrar</button>
+        <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="Actualizar(catup)">Guardar</button>
+      </div>
+    </div>
+  </div>
 </div>
